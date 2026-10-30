@@ -1,0 +1,24 @@
+{
+  "name": "file-organizer",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Dm3583/file-organizer#readme",
+  "bugs": {
+    "url": "https://github.com/Dm3583/file-organizer/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dm3583/file-organizer.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "file-organizer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scan": "node file-organizer.js scan",
+    "duplicates": "node file-organizer.js duplicates",
+    "organize": "node file-organizer.js organize",
+    "cleanup": "node file-organizer.js cleanup"
+  }
+}
