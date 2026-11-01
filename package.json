@@ -20,5 +20,8 @@
     "duplicates": "node file-organizer.js duplicates",
     "organize": "node file-organizer.js organize",
     "cleanup": "node file-organizer.js cleanup"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.10"
   }
 }
