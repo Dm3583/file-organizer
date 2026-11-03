@@ -15,7 +15,6 @@
   "type": "module",
   "main": "file-organizer.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "scan": "node file-organizer.js scan",
     "duplicates": "node file-organizer.js duplicates",
     "organize": "node file-organizer.js organize",
@@ -25,6 +24,6 @@
     "prettier": "^3.9.10"
   },
   "engines": {
-    "node": ">=20.12"
+    "node": ">=18"
   }
 }
