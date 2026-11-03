@@ -13,7 +13,7 @@ import {
   CATEGORY_NAMES,
   EVENTS,
 } from './lib/utils/constants.js';
-import { drawProgressBar } from './lib/utils/format.js';
+import { printProgress } from './lib/utils/format.js';
 import {
   printCleanupReport,
   printCleanupStart,
@@ -36,9 +36,7 @@ async function runScan(directory) {
   });
 
   scanner.on(EVENTS.FILE_PROCESSED, ({ processed, total }) => {
-    process.stdout.write(
-      `\rProcessing... ${drawProgressBar(processed, total)} files`,
-    );
+    printProgress('Processing...', processed, total, ' files');
   });
 
   scanner.on(EVENTS.SCAN_COMPLETE, (data) => {
@@ -58,9 +56,7 @@ async function runDuplicates(directory) {
   });
 
   duplicateFinder.on(EVENTS.FILE_PROCESSED, ({ processed, total }) => {
-    process.stdout.write(
-      `\rCalculating hashes... ${drawProgressBar(processed, total)} files`,
-    );
+    printProgress('Calculating hashes...', processed, total, ' files');
   });
 
   duplicateFinder.on(EVENTS.DUPLICATES_FOUND, (result) => {
@@ -80,9 +76,7 @@ async function runOrganize(sourceDirectory, targetDirectory) {
   });
 
   organizer.on(EVENTS.FILE_PROCESSED, ({ processed, total }) => {
-    process.stdout.write(
-      `\rCopying files... ${drawProgressBar(processed, total)}`,
-    );
+    printProgress('Copying files...', processed, total);
   });
 
   printOrganizeStart(sourceDirectory, targetDirectory);
@@ -102,7 +96,7 @@ async function runCleanup(directory, olderThanDays, confirm) {
   attachErrorHandlers(cleanup);
 
   cleanup.on(EVENTS.FILE_PROCESSED, ({ processed, total }) => {
-    process.stdout.write(`\rDeleting... ${drawProgressBar(processed, total)}`);
+    printProgress('Deleting...', processed, total);
   });
 
   cleanup.on(EVENTS.CLEANUP_COMPLETE, (result) => {
